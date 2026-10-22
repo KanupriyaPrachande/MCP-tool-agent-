@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --cosmic-latte: #FFF8E7;
+    --cream: #FFFDF5;
+    --soft-cream: #F5EBD3;
+    --mocha: #A47864;
+    --mocha-border: rgba(164, 120, 100, 0.25);
+    --dark-mocha: #3B2A24;
+    --burgundy: #7A1F3D;
+    --burgundy-hover: #5E1730;
+    --burgundy-tint: #F3E1E6;
+
+    --olive: #6B7A3A;
+    --amber: #B7791F;
+    --brick: #A63D2F;
+
+    --background: #FFF8E7;
+    --foreground: #3B2A24;
+    --card: #FFFDF5;
+    --card-foreground: #3B2A24;
+    --border: rgba(164, 120, 100, 0.25);
+    --border-subtle: rgba(164, 120, 100, 0.15);
+    --input: rgba(164, 120, 100, 0.25);
+    --primary: #7A1F3D;
+    --primary-hover: #5E1730;
+    --primary-foreground: #FFFDF5;
+    --accent: #F3E1E6;
+    --accent-foreground: #7A1F3D;
+    --muted: #A47864;
+    --muted-bg: #F5EBD3;
+
+    /* Status Tokens */
+    --status-ok: #6B7A3A;
+    --status-ok-bg: rgba(107, 122, 58, 0.12);
+    --status-ok-border: rgba(107, 122, 58, 0.25);
+
+    --status-pending: #B7791F;
+    --status-pending-bg: rgba(183, 121, 31, 0.12);
+    --status-pending-border: rgba(183, 121, 31, 0.25);
+
+    --status-denied: #A63D2F;
+    --status-denied-bg: rgba(166, 61, 47, 0.12);
+    --status-denied-border: rgba(166, 61, 47, 0.25);
+  }
+
+  * {
+    border-color: rgba(164, 120, 100, 0.25);
+  }
+
+  body {
+    background-color: #FFF8E7;
+    color: #3B2A24;
+    background-image: radial-gradient(ellipse 80% 80% at 8% 0%, rgba(164, 120, 100, 0.08), transparent 60%);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@theme inline {
+  --color-cosmic-latte: #FFF8E7;
+  --color-cream: #FFFDF5;
+  --color-soft-cream: #F5EBD3;
+  --color-mocha: #A47864;
+  --color-dark-mocha: #3B2A24;
+  --color-burgundy: #7A1F3D;
+  --color-burgundy-hover: #5E1730;
+  --color-burgundy-tint: #F3E1E6;
+
+  --color-olive: #6B7A3A;
+  --color-amber: #B7791F;
+  --color-brick: #A63D2F;
+
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+}
+
+/* Subtle transitions default */
+button, a, input, select, textarea {
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tabular figures for data tables */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thin Mocha scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(164, 120, 100, 0.35);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(164, 120, 100, 0.6);
+}
+
+::selection {
+  background-color: #F3E1E6;
+  color: #7A1F3D;
+}
