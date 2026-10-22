@@ -123,29 +123,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       router.push("/workspace");
       return { success: true };
     } catch (err) {
-      // If backend is not currently running, check against demo accounts for zero-friction evaluation
-      const demoMatch = DEMO_ACCOUNTS.find(
-        (acc) => acc.username === username && acc.password === password
-      );
-      if (demoMatch) {
-        // Fallback demo token
-        const mockUser: User = {
-          username: demoMatch.username,
-          role: demoMatch.role,
-          token: `demo-token-${demoMatch.role}-${Date.now()}`,
-        };
-        localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(mockUser));
-        setUser(mockUser);
-        router.push("/workspace");
-        return {
-          success: true,
-          error: "Connected in local demo mode (FastAPI backend at http://localhost:8000 was unreachable).",
-        };
-      }
-
       return {
         success: false,
-        error: "Unable to connect to authentication server at " + API_URL,
+        error:
+          "Can't reach the Sentinel backend. It runs on a free tier and may be waking up. Wait about a minute and try again.",
       };
     }
   };
@@ -158,7 +139,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       const url = endpoint.startsWith("http") ? endpoint : `${API_URL}${endpoint}`;
-      
+
       const response = await fetch(url, {
         ...options,
         headers,
