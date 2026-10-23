@@ -103,7 +103,8 @@ Permissions are enforced on the server, not in the prompt. The matrix shows each
 ## Architecture
 
 ```mermaid
-flowchart LR
+
+flowchart TB
     U["User<br/>(HR / Manager / Intern)"] --> FE["Next.js Frontend<br/>Login, Workspace,<br/>Audit log, Access matrix"]
     FE -- "HTTPS + JWT<br/>(SSE stream)" --> API["FastAPI<br/>/login /chat /approve /audit<br/>JWT verify, role extraction"]
 
