@@ -13,10 +13,6 @@
 
 **[Live Demo](https://mcp-tool-agent-five.vercel.app)** · **[API Docs](https://sentinel-api-w3hj.onrender.com/docs)** · **[Architecture](#architecture)** · **[Security Model](#security-model)**
 
-> The backend runs on a free tier and sleeps after 15 minutes of inactivity. The first request after a pause can take about a minute to wake it up.
-
-![Sentinel login page](docs/screenshots/login.png)
-
 ---
 
 ## Table of Contents
