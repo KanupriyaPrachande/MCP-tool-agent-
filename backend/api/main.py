@@ -37,7 +37,8 @@ app.add_middleware(
 bearer = HTTPBearer()
 
 def init_audit():
-    con = sqlite3.connect(AUDIT_DB)git grep -n "^import os" backend/api/main.py
+    
+    con = sqlite3.connect(AUDIT_DB)
     con.execute("CREATE TABLE IF NOT EXISTS audit(ts REAL, user TEXT, role TEXT, event TEXT, detail TEXT)")
     con.commit(); con.close()
 init_audit()
