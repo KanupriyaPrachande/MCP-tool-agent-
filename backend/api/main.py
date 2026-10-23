@@ -21,12 +21,23 @@ DEMO_USERS = {  # username: (password, role)
 }
 
 app = FastAPI(title="Sentinel")
-app.add_middleware(CORSMiddleware, ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(","),
-                   allow_origins=ALLOWED_ORIGINS,
+ALLOWED_ORIGINS = [
+    o.strip()
+    for o in os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+    if o.strip()
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 bearer = HTTPBearer()
 
 def init_audit():
-    con = sqlite3.connect(AUDIT_DB)
+    con = sqlite3.connect(AUDIT_DB)git grep -n "^import os" backend/api/main.py
     con.execute("CREATE TABLE IF NOT EXISTS audit(ts REAL, user TEXT, role TEXT, event TEXT, detail TEXT)")
     con.commit(); con.close()
 init_audit()
